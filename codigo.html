@@ -2,30 +2,21 @@
     <meta charset="UTF-8">
     <script>
         
-        try {
-            // executa algo...
-            // consulta de API, Banco de Dados, arquivos... 
-            console.log('consultando bando de dados...')
-                       
-            //con.select('tabela de clientes') //ponto de falha
-            //throw "Erro 1032 ao concectar ao conctar ao banco de dados"
-
-            console.log('outro comando...')
-
-        } catch (error) {
-            //error
-            // alert('Erro de execução')
-            console.error(error)
-
-        } finally{
-            //sempre executa no final (opcional)
-            console.log('execução final')
-
-            //exemplo de uso do finally: apagar arquivo temporario caso tenha um error
+        const person = {
+            name: "Filipe",
+            age: "21",
+            city: "Recife",
         }
 
 
-// throw dispara o erro
-// console.error mostra o erro para o desenvolvedor
-</script>
+            // um objeto pode ser acessado de duas formas:
+                //obj.prop
+                //obj.['prop'] <<
+
+        for (const prop in person) {
+            console.log(`Prop: ${prop} - ${person[prop]}`)
+
+        }
+
+    </script>
 </html>

@@ -1,80 +1,43 @@
-<html>
-    <script>
-        // Encontre o elemento HTML com o id "password" e armazene-o em uma variável chamada inputEl
-const inputEl = document.querySelector("#password");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Gerador de senhas</h1>
 
-// Defina o comprimento padrão da senha como 16
-let passwordLength = 16;
+    <input type="text" name="password" id="password">
 
-// Defina uma função chamada "generatePassword" que gera uma senha
-function generatePassword() {
-    // Defina uma string com os caracteres que serão usados para gerar a senha
-    const chars = "abcdefghjklmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789.+-[]*_@#$?";
+    <input type="range" name="password-length"
+    id="password-length"
+    min="4"
+    max="64"
+    value="16">
 
-    // Crie uma variável vazia chamada "password" para armazenar a senha gerada
-    let password = "";
+    <input type="button" value="copy" id="copy">
 
-    // Repita o seguinte código "passwordLength" vezes
-    for (let i = 0; i < passwordLength ; i++) {
-        // Gere um número aleatório entre 0 e o comprimento da string "chars"
-        const randomNumber = Math.floor(Math.random() * chars.length);
+<script>
 
-        // Adicione um caractere aleatório da string "chars" à variável "password"
-        password += chars.substring(randomNumber, randomNumber + 1);
-    }
-    
-    // Defina o valor do elemento HTML "inputEl" como a senha gerada
-    inputEl.value = password;
-} 
+    function genaretePassword() {
 
-// Encontre o elemento HTML com o id "password-length" e armazene-o em uma variável chamada passwordLengthEl
-const passwordLengthEl = document.querySelector("#password-length");
+        const chars = "QWEASDZXCqweasdfzxc1234567890!@#$%#%¨*"
 
-// Adicione um ouvinte de eventos para o evento "input" no elemento "passwordLengthEl"
-passwordLengthEl.addEventListener("input", function() {
-    // Atualize o valor da variável "passwordLength" com o valor do elemento "passwordLengthEl"
-    passwordLength = passwordLengthEl.value;
+        let password = ""
 
-    // Chame a função "generatePassword" para gerar uma nova senha com o novo comprimento
-    generatePassword();
-});
+            for (let i = 0; i < 8; i++) {
+                const randomNumber = Math.floor(Math.random() * chars.length)
+                password += chars.substring(randomNumber, randomNumber +1) 
+            }
 
-// Defina uma função chamada "copy" que copia o valor do elemento HTML "inputEl" para a área de transferência
-function copy() {
-    // Use o objeto "navigator.clipboard" para escrever o valor do elemento "inputEl" na área de transferência
-    navigator.clipboard.writeText(inputEl.value);
-}
-
-// Encontre o elemento HTML com o id "copy" e armazene-o em uma variável chamada copyButtonEl
-const copyButtonEl = document.querySelector("#copy");
-
-// Adicione um ouvinte de eventos para o evento "click" no elemento "copyButtonEl"
-copyButtonEl.addEventListener("click", copy);
-
-// Gere uma senha inicial assim que o código for executado
-generatePassword();
+        const inputEl = document.querySelector("#password")
+        inputEl = password.value
+        
+        console.log(password)
+    } genaretePassword()
 
 
-// Explicações do código:
-
-/*
-- O código acima é um exemplo de geração de senha aleatória em JavaScript.
-
-- A função "generatePassword" é responsável por gerar a senha. Ela usa uma string de caracteres para criar uma senha aleatória com base no comprimento especificado.
-
-- A variável "inputEl" representa o campo de entrada (input) no HTML onde a senha será exibida.
-
-- A variável "passwordLength" armazena o comprimento atual da senha.
-
-- O evento "input" no elemento com o id "password-length" é usado para atualizar o comprimento da senha quando o usuário interage com o controle deslizante.
-
-- A função "copy" é acionada quando o botão com o id "copy" é clicado. Ela copia a senha gerada para a área de transferência do dispositivo.
-
-- O código também contém a chamada inicial da função "generatePassword" para gerar a primeira senha quando a página é carregada.
-
-- Em resumo, o código permite gerar senhas aleatórias com base no comprimento especificado pelo usuário, exibir a senha em um campo de texto, atualizar automaticamente a senha quando o usuário modifica o comprimento e copiar a senha para a área de transferência.
-*/
-
-
-    </script>
+</script>
+</body>
 </html>

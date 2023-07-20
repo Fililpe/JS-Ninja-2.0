@@ -1,63 +1,53 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de senhas</title>
+    <title>Document</title>
 </head>
 <body>
-    <header>
-        <h1>Gerador de senha</h1>
-        <p>Utilize nosso gerador online para criar uma senha forte e segura.</p>
-    </header>
-    <main>
-        <input type="text" name="password" id="password">
+    <h1>Gerador de senhas</h1>
 
-        <input type="range"
-        name="password-length"
-        id="password-length"
-        value="16"
-        min="4"
-        max="64">
+    <input type="text" name="password" id="password">
 
-        <button id="copy">Copiar senha</button> 
+    <input type="range" name="password-length"
+    id="password-length"
+    min="4"
+    max="64"
+    value="16">
 
-    </main>
-
+    <input type="button" value="copy" id="copy">
 
 <script>
-let passwordLength = '16'
+let passwordLength = 16
+
 const inputEl = document.querySelector("#password")
 
+function generatePassword() {
+    const chars = "qweasdzxcQWEASDZXC1234567890!@#$%%¨&"
 
-    function generatePassword() {
-        const chars = "QWEASDZXCqweasdzxc1234567890!@#$%¨&*"
-        
-        let password = ""
+    let password = ""
 
-        for (let i = 0; i < 8; i++) {
-            
-            const randomPassword = Math.floor(Math.random() * chars.length)
-            password += chars.substring(randomPassword, randomPassword + 1)
-        }
-        inputEl.value = password
+    for (let i = 0; i < 10; i++) {
+        const randomPassword = Math.floor(Math.random() * chars.length)
+        password += chars.substring(randomPassword, randomPassword + 1)
         
-    } 
-    
+    }
+    inputEl.value = password
+
+
+}
+
     const passwordLengthEl = document.querySelector("#password-length")
-    passwordLengthEl.addEventListener("input", function(){
+    passwordLengthEl.addEventListener("input", function() {
         passwordLength = passwordLengthEl.value
         generatePassword()
     })
 
-    const copyButtonEl = document.querySelector("#copy")
-    copyButtonEl.addEventListener("click", function(){
-        navigator.clipboard.writeText(inputEl.value)
-    })
-    
-    
-    generatePassword()
+    console.log(passwordLength)
 
+
+generatePassword()
 </script>
 </body>
 </html>

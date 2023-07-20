@@ -15,6 +15,7 @@ function generatePassword() {
      inputEl.value = password    
     }
 
+        // função copy pensada por mim utilizando function anonima
     const copyButtonEl = document.querySelector("#copy")
     copyButtonEl.addEventListener("click", function () {
         navigator.clipboard.writeText(inputEl.value)
@@ -25,5 +26,14 @@ function generatePassword() {
         passwordLength = passwordLengthEl.value 
         generatePassword()
     })
+
+    /*  função copy do projeto original  */
+
+    // function copy() {
+    //     navigator.clipboard.writeText(inputEl.value)
+    // }
+  
+    // const copyButtonEl = document.querySelector("#copy")
+    // copyButtonEl.addEventListener("click", copy)
 
 generatePassword()

@@ -1,4 +1,4 @@
-let passwordLength = '16'
+let passwordLength = 16
 const inputEl = document.querySelector("#password")
 
 function generatePassword() {

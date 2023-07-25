@@ -1,6 +1,6 @@
 const inputEl = document.querySelector("#password")
 
-let passwordLength = 16
+let passwordLength = '16'
 
 function generatePassword() {
     const chars = "abcdefghjklmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789.+-[]*_@#$?"
@@ -14,7 +14,6 @@ function generatePassword() {
     }
     
     inputEl.value = password
-    
 } 
 
     const passwordLengthEl = document.querySelector("#password-length")
@@ -28,15 +27,9 @@ function generatePassword() {
         navigator.clipboard.writeText(inputEl.value)
     }
   
-    const copyButtonEl = document.querySelector("#copy")
-    copyButtonEl.addEventListener("click", copy)
+    document.querySelector("#copy-1").addEventListener("click", copy)
+    document.querySelector("#copy-2").addEventListener("click", copy)
 
-       /* função copy pensada por mim utilizando function anonima */
-    //  const copyButtonEl = document.querySelector("#copy")
-    //  copyButtonEl.addEventListener("click", function () {
-    //      navigator.clipboard.writeText(inputEl.value)
-    //  })
- 
 
     
 generatePassword()

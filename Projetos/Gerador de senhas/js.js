@@ -3,7 +3,15 @@ const inputEl = document.querySelector("#password")
 let passwordLength = '16'
 
 function generatePassword() {
-    const chars = "abcdefghjklmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789.+-[]*_@#$?"
+    const chars = "abcdefghjklmnpqrstuvwxyz"
+
+    const upperCaseChars = "ABCDEFGHJKLMNPQRSTUVWXYZ"
+    const numberChars = "123456789"
+    const symbolChars = "?!@&*()[]$"
+
+    chars += upperCaseChars;
+    chars += numberChars;
+    chars += symbolChars;
 
     //String vazia. Essa variável será usada para armazenar a senha gerada.
     let password = ""

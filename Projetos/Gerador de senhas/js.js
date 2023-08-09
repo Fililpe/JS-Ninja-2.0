@@ -1,49 +1,71 @@
 const inputEl = document.querySelector("#password")
+const upperCaseCharsEl = document.querySelector("#uppercase-check")
+const numberCharsEl = document.querySelector("#number-check")
+const symbolCharsEl = document.querySelector("#symbol-check")
+const securityIndicatorBarEl = document.querySelector("#security-indicator-bar")
 
-let passwordLength = '16'
+let passwordLength = "16";
 
 function generatePassword() {
-    const chars = "abcdefghjklmnpqrstuvwxyz"
+  let chars = "abcdefghjklmnpqrstuvwxyz"
 
-    const upperCaseChars = "ABCDEFGHJKLMNPQRSTUVWXYZ"
-    const numberChars = "123456789"
-    const symbolChars = "?!@&*()[]$"
+  const upperCaseChars = "ABCDEFGHJKLMNPQRSTUVWXYZ"
+  const numberChars = "123456789"
+  const symbolChars = "?!@&*()[]$"
 
+  if (upperCaseCharsEl.checked) {
     chars += upperCaseChars;
+  }
+  if (numberCharsEl.checked) {
     chars += numberChars;
+  }
+  if (symbolCharsEl.checked) {
     chars += symbolChars;
+  }
 
-    //String vazia. Essa variável será usada para armazenar a senha gerada.
-    let password = ""
+  //String vazia. Essa variável será usada para armazenar a senha gerada.
+  let password = "";
 
-    for (let i = 0; i < passwordLength ; i++) {
-        const randomNumber = Math.floor(Math.random() * chars.length)
-        password += chars.substring(randomNumber, randomNumber + 1)
-    }
+  for (let i = 0; i < passwordLength; i++) {
+    const randomNumber = Math.floor(Math.random() * chars.length);
+    password += chars.substring(randomNumber, randomNumber + 1);
+  }
+
+  inputEl.value = password
+
+  calculateQuality()
+}
+
+function calculateQuality() {
+
+    const percent = Math.round((passwordLength / 64) * 100)
     
-    inputEl.value = password
-} 
+    console.log(percent)
 
-    const passwordLengthEl = document.querySelector("#password-length")
-    passwordLengthEl.addEventListener("input", function() {
-        passwordLength = passwordLengthEl.value
-        generatePassword()
-    })
+    securityIndicatorBarEl.style.width = `${percent}%`
+}
 
+const passwordLengthEl = document.querySelector("#password-length");
+passwordLengthEl.addEventListener("input", function () {
+  passwordLength = passwordLengthEl.value;
+  document.querySelector("#password-length-text").innerText = passwordLength;
+  generatePassword();
+});
 
-    function copy() {
-        navigator.clipboard.writeText(inputEl.value)
-    }
-  
-    document.querySelector("#copy-1").addEventListener("click", copy)
-    document.querySelector("#copy-2").addEventListener("click", copy)
+upperCaseCharsEl.addEventListener("click", generatePassword);
+numberCharsEl.addEventListener("click", generatePassword);
+symbolCharsEl.addEventListener("click", generatePassword);
 
+function copy() {
+  navigator.clipboard.writeText(inputEl.value);
+}
 
-    
-generatePassword()
+document.querySelector("#copy-1").addEventListener("click", copy);
+document.querySelector("#copy-2").addEventListener("click", copy);
 
+generatePassword();
 
-    // Guia para estudo //
+// Guia para estudo //
 /*
 linha 8:
     const randomNumber = Math.floor(Math.random() * chars.length):
